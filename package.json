@@ -4,7 +4,7 @@
   "description": "web camera",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "gulp",
     "dev": "webpack-dev-server --inline --content-base www/",
     "test": "mocha"
   },
@@ -36,13 +36,16 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
+    "del": "^2.2.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "gulp": "^3.9.1",
     "node-sass": "^3.13.0",
     "react-hot-loader": "^1.3.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-stream": "^3.2.0"
   }
 }
