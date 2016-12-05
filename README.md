@@ -1,2 +1,1 @@
-# web-camera
-web camera app
+# web camera
