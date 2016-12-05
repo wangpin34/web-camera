@@ -30,6 +30,11 @@ module.exports = {
     plugins: [  
                 new ExtractTextPlugin("style.css"),
                 new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"react", /* filename= */"react.bundle.js"),
+                new webpack.DefinePlugin({
+                    "process.env": { 
+                        NODE_ENV: JSON.stringify("development") 
+                    }
+                }),
                 commonsPlugin,
                 new webpack.HotModuleReplacementPlugin({hot: true})]
 };

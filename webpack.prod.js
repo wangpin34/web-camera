@@ -28,6 +28,11 @@ module.exports = {
     plugins: [  
                 new ExtractTextPlugin("style.css"),
                 new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"react", /* filename= */"react.bundle.js"),
+                new webpack.DefinePlugin({
+                    "process.env": { 
+                        NODE_ENV: JSON.stringify("production") 
+                    }
+                }),
                 new webpack.optimize.UglifyJsPlugin({
                     compress: {
                         warnings: false    
