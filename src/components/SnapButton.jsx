@@ -8,8 +8,8 @@ class SnapButton extends Component {
 
     render() {
         return (
-            <div className="buttons">
-                <button className="snapButton" onClick={ this.props.onSnap }>Snap</button>
+            <div className="snapButton">
+                <span className="button" onClick={ this.props.onSnap }></span>
             </div>
         )
     }
