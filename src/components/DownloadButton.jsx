@@ -11,8 +11,8 @@ class DownloadButton extends Component {
     onDownload() {
         let { src, name, ext } = this.props
         let a = document.createElement('a')
-        a.setAttribute('href', src)
-        a.setAttribute('download', name + '.' + ext)
+        a.href = src
+        a.download = name + '.' + ext
         a.style.display = 'none'
         document.body.appendChild(a)
         a.click()
