@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { findDOMNode } from 'react-dom'
 
-class Photo extends Component {
+class Thumb extends Component {
 
     constructor(props){
         super(props)
@@ -10,7 +10,7 @@ class Photo extends Component {
     render() {
         let { name, size, timestamp } = this.props.meta
         return (
-            <div className="photo">
+            <div className="thumb">
                 <p className="meta">
                     <span>{ name }</span>
                     <span>{ size }</span>
@@ -22,7 +22,7 @@ class Photo extends Component {
     }
 }
 
-Photo.propTypes = {
+Thumb.propTypes = {
     src: PropTypes.object.isRequired,
     meta: PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -31,4 +31,4 @@ Photo.propTypes = {
     })
 }
 
-export default Photo
+export default Thumb
