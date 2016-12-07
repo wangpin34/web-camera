@@ -10,7 +10,7 @@ class ThumbBox extends Component {
     render() {
        let thumbs = [].concat(this.props.thumbs).reverse()
        return (
-            <ul className="photos">
+            <ul className="thumbbox">
                 {thumbs.map((thumb) => {
                     return <li key={Math.random()}><Thumb src={thumb.src} meta={thumb.meta}/></li>
                 })}
