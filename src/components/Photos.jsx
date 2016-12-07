@@ -8,9 +8,10 @@ class Photos extends Component {
     }
 
     render() {
+       let thums = [].concat(this.props.thums).reverse()
        return (
             <ul className="photos">
-                {this.props.thums.map((thum) => {
+                {thums.map((thum) => {
                     return <li key={Math.random()}><Photo src={thum.src} meta={thum.meta}/></li>
                 })}
             </ul>
