@@ -1,14 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import { findDOMNode } from 'react-dom'
+import ButtonBox from './ButtonBox.jsx'
 import SnapButton from './SnapButton.jsx'
-import Photos from './Photos.jsx'
+import ThumbBox from './ThumbBox.jsx'
+import { getTimeNum } from '../utils/time'
 
 class Camera extends Component {
 
     constructor(props) {
         super(props)
 
-        this.state = { thums: [] }
+        this.state = { thumbs: [] }
 
         this.handleSnap = this.handleSnap.bind(this)
     }
@@ -38,10 +40,10 @@ class Camera extends Component {
         drawmap.getContext('2d').drawImage(video, 0, 0, video.clientWidth, video.clientHeight)
         let dataURI = drawmap.toDataURL('image/jpeg')
         let timestamp = (new Date()).toGMTString()
-        let name = timestamp
+        let name = getTimeNum()
         let size = 10
         this.setState((preState) => {
-            return preState.thums.push({
+            return preState.thumbs.push({
                 src: dataURI,
                 meta: {
                     name,
@@ -58,8 +60,10 @@ class Camera extends Component {
             <div className="camera-box">
                 <video ref="video" autoPlay></video>
                 <canvas id="drawmap" ref="drawmap"></canvas>
-                <SnapButton onSnap={ this.handleSnap }/>
-                <Photos thums={ this.state.thums }/>
+                <ButtonBox>
+                    <SnapButton onSnap={ this.handleSnap }/>
+                </ButtonBox>
+                <ThumbBox thumbs={ this.state.thumbs }/>
             </div>
         )
     }
