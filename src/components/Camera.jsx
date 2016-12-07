@@ -38,7 +38,13 @@ class Camera extends Component {
         drawmap.width = video.clientWidth
         drawmap.height = video.clientHeight
         drawmap.getContext('2d').drawImage(video, 0, 0, video.clientWidth, video.clientHeight)
-        let dataURI = drawmap.toDataURL('image/jpeg')
+        let dataURI
+        try{
+            dataURI = drawmap.toDataURL('image/jpeg')
+        }catch(err){
+            dataURI = drawmap.toDataURL('image/png')
+        }
+        
         let timestamp = (new Date()).toGMTString()
         let name = getTimeNum()
         let size = 10
