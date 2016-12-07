@@ -7,11 +7,6 @@ class Photo extends Component {
         super(props)
     }
 
-    componentDidMount() {
-        let img = findDOMNode(this.refs.img)
-        img.src = this.props.src
-    }
-
     render() {
         let { name, size, timestamp } = this.props.meta
         return (
@@ -21,7 +16,7 @@ class Photo extends Component {
                     <span>{ size }</span>
                     <span>{ timestamp }</span>
                 </p>
-                <img ref="img"/>
+                <img ref="img" src={ this.props.src }/>
             </div>
         )
     }
