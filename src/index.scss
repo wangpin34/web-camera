@@ -3,6 +3,10 @@ html {
 	height: 100%;
 }
 
+.button {
+	cursor: pointer;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -63,7 +67,7 @@ body {
 				}
 			}
 
-			.photos {
+			.thumbbox {
 				margin: 0;
 				padding: 0;
 				height: 124px;
@@ -78,7 +82,9 @@ body {
 					white-space: nowrap;
 				}
 
-				.photo {
+				.thumb {
+					position: relative;
+
 					img {
 						width: 100px;
 						height: 100px;
@@ -87,7 +93,24 @@ body {
 					.meta {
 						display: none;
 					}
+
+					.thumb-button {
+						display: none;
+						font-size: 10px;
+					}
+
+					&:hover {
+
+						.thumb-button {
+							display: inline-block;
+							position: absolute;
+							bottom: 0;
+							right: 0;
+						}
+					}
 				}
+
+
 			}
 		}
 		

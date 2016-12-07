@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { findDOMNode } from 'react-dom'
+import DownloadButton from './DownloadButton.jsx'
 
 class Thumb extends Component {
 
@@ -8,7 +9,12 @@ class Thumb extends Component {
     }
 
     render() {
+        let src = this.props.src
         let { name, size, timestamp } = this.props.meta
+        let ext = src.substring(src.indexOf('/') + 1, src.indexOf(';'))
+        if(ext === 'jpeg'){
+            ext = 'jpg'
+        }
         return (
             <div className="thumb">
                 <p className="meta">
@@ -16,14 +22,15 @@ class Thumb extends Component {
                     <span>{ size }</span>
                     <span>{ timestamp }</span>
                 </p>
-                <img ref="img" src={ this.props.src }/>
+                <DownloadButton src={ src } name={ name } ext={ ext }/>
+                <img ref="img" src={ src }/>
             </div>
         )
     }
 }
 
 Thumb.propTypes = {
-    src: PropTypes.object.isRequired,
+    src: PropTypes.string.isRequired, //dataURI
     meta: PropTypes.shape({
         name: PropTypes.string.isRequired,
         size: PropTypes.number.isRequired,
