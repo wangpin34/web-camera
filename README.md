@@ -1,8 +1,6 @@
 # webcam
 It's a camera based on web technologies. You can take picture without any pre installed camara applications.
 
-[Try webcam](https://wangpin34.github.io/webcam/)
-
 ## Development
 This assumes nodejs and npm are installed at your local machine.
 
