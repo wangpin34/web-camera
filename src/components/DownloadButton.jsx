@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import FileFileDownload from 'material-ui/svg-icons/file/file-download';
 
 class DownloadButton extends Component {
 
@@ -21,7 +22,7 @@ class DownloadButton extends Component {
 
     render() {
         return (
-            <span className="button thumb-button" onClick={ this.onDownload }>Download</span>
+            <FileFileDownload className="thumb-button" style={{ color: "#ffffff"}} />
         )
     }
 }

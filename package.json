@@ -24,10 +24,14 @@
   },
   "homepage": "https://github.com/wangpin34/web-camera#readme",
   "dependencies": {
+    "material-ui": "^0.16.5",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
-    "redux": "^3.6.0"
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",

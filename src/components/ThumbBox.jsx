@@ -8,11 +8,11 @@ class ThumbBox extends Component {
     }
 
     render() {
-       let thumbs = [].concat(this.props.thumbs).reverse()
+       let { thumbs, startView } = this.props
        return (
             <ul className="thumbbox">
                 {thumbs.map((thumb) => {
-                    return <li key={Math.random()}><Thumb src={thumb.src} meta={thumb.meta}/></li>
+                    return <li key={Math.random()}><Thumb dataURI={thumb.dataURI} meta={thumb.meta} onView={ () => { startView(thumb) } }/></li>
                 })}
             </ul>
        ) 
@@ -20,7 +20,15 @@ class ThumbBox extends Component {
 }
 
 ThumbBox.propTypes = {
-    thumbs: PropTypes.array.isRequired
+    thumbs: PropTypes.arrayOf(PropTypes.shape({
+      dataURI: PropTypes.string.isRequired,
+      meta: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        size: PropTypes.number.isRequired,
+        timestamp: PropTypes.string.isRequired
+      }).isRequired
+    })),
+    startView: PropTypes.func.isRequired
 }
 
 export default ThumbBox

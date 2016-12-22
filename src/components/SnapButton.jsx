@@ -16,7 +16,7 @@ class SnapButton extends Component {
 }
 
 SnapButton.propTypes = {
-    onSnap: PropTypes.func.isRequire
+    onSnap: PropTypes.func.isRequired
 }
 
 export default SnapButton

@@ -36,5 +36,5 @@ module.exports = {
                     }
                 }),
                 commonsPlugin,
-                new webpack.HotModuleReplacementPlugin({hot: true})]
+                new webpack.HotModuleReplacementPlugin()]
 };

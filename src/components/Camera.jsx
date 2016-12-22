@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { findDOMNode } from 'react-dom'
 import ButtonBox from './ButtonBox.jsx'
 import SnapButton from './SnapButton.jsx'
-import ThumbBox from './ThumbBox.jsx'
 import { getTimeNum } from '../utils/time'
 
 class Camera extends Component {
@@ -48,15 +47,10 @@ class Camera extends Component {
         let timestamp = (new Date()).toGMTString()
         let name = getTimeNum()
         let size = 10
-        this.setState((preState) => {
-            return preState.thumbs.push({
-                src: dataURI,
-                meta: {
+        this.props.snap(dataURI, {
                     name,
                     size,
                     timestamp
-                }
-            })
         })
     }
 
@@ -69,11 +63,14 @@ class Camera extends Component {
                 <ButtonBox>
                     <SnapButton onSnap={ this.handleSnap }/>
                 </ButtonBox>
-                <ThumbBox thumbs={ this.state.thumbs }/>
             </div>
         )
     }
 
+}
+
+Camera.propTypes = {
+    snap: PropTypes.func.isRequired
 }
 
 export default Camera
