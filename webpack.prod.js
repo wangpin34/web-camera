@@ -1,7 +1,7 @@
-var webpack = require('webpack');
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     entry: {
@@ -9,39 +9,49 @@ module.exports = {
         react: ['react', 'react-dom']
     },
     output: {
-        path: path.join(__dirname, './www'),
-        publicPath: '/',
-        filename: '[name].js'
+        path: path.join(__dirname, './dist'),
+        filename: '[name][hash].js'
     },
     resolve: {
-        //root: path.join(__dirname,'src'),
         modulesDirectories: ["src", "assets", "node_modules"],
-        extensions: ['', '.js', '.jsx', '.scss', 'png']
+        extensions: ['', '.js', '.jsx', '.scss', 'jpg', 'png']
     },
     module: {
         loaders: [
             {test: /\.jsx?$/, loader: 'babel', include: path.join(__dirname, 'src')},
             {test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass'), include: path.join(__dirname, 'src'), exclude: /node_modules|lib/},
-            {test: /\.png$/, loader: 'file'}
+            {test: /\.(jpg|png)$/, loader: 'file'}
         ]
     },
-    plugins: [  
-                new ExtractTextPlugin("style.css"),
-                new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"react", /* filename= */"react.bundle.js"),
+    plugins: [
+
+                new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'react', /* filename= */'react.bundle.js'),
+                new webpack.optimize.CommonsChunkPlugin('common.js'),
+                // Webpack 1.0
+                new webpack.optimize.OccurenceOrderPlugin(),
+                // Webpack 2.0 fixed this mispelling
+                // new webpack.optimize.OccurrenceOrderPlugin(),
+                new webpack.NoErrorsPlugin(),
                 new webpack.DefinePlugin({
-                    "process.env": { 
-                        NODE_ENV: JSON.stringify("production") 
+                    "process.env": {
+                        NODE_ENV: JSON.stringify('production')
                     }
                 }),
                 new webpack.optimize.UglifyJsPlugin({
                     compress: {
-                        warnings: false    
+                        warnings: false
                     },
                     comments: true,
                     sourceMap: false,
                     mangle: {
                         except: ['$super', '$','exports','require','import']
-                    } 
+                    }
                 }),
-                commonsPlugin]
+                new ExtractTextPlugin("style.css"),
+                new HtmlWebpackPlugin({
+                  filename: 'index.html',
+                  template: './src/app.template.html',
+                  inject: 'body'
+                })
+            ]
 };

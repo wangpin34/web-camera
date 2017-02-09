@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp",
-    "dev": "webpack-dev-server --inline --content-base www/ --port 8080",
+    "dev": "node hot-server.js",
     "test": "mocha"
   },
   "repository": {
@@ -37,19 +37,27 @@
     "babel": "^6.5.2",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
     "del": "^2.2.2",
+    "express": "^4.14.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "gulp": "^3.9.1",
+    "html-webpack-plugin": "^2.28.0",
     "node-sass": "^3.13.0",
     "react-hot-loader": "^1.3.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.10.0",
     "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.16.1",
     "webpack-stream": "^3.2.0"
   }
 }
