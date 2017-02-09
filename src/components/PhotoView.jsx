@@ -7,25 +7,15 @@ class PhotoView extends Component {
     }
 
     render() {
-        if(this.props.photo){
-            let { photo: {dataURI, meta: { name, size, timestamp } }, next, pre, end, download } = this.props
-            return (
-                <div className="photo-view">
-                    <div className="mask"></div>
-                    <div className="photo">
-                        <img src={ dataURI }/>
-                    </div>
-                </div>
-            )
-        }else{
-            return  <div className="photo-view">
-                    <div className="mask"></div>
-                    <div className="photo">
-                        <img src={ dataURI }/>
-                    </div>
-                </div>
-        }
-        
+        let { photo: { dataURI, meta: { name, size, timestamp } }, onNext, onPre, onClose, download } = this.props
+        return (
+            <div className="photo-view">
+                <span className="icon close" onClick={onClose}>X</span>
+                <span className="icon previous" onClick={onPre}>&lt;</span>
+                <img className="photo" src={ dataURI }/>
+                <span className="icon next" onClick={onNext}>&gt;</span>
+            </div>
+        )
     }
 }
 
@@ -38,11 +28,9 @@ PhotoView.propTypes = {
             timestamp: PropTypes.string.isRequired
         }).isRequired
     }),
-    next: PropTypes.func.isRequired,
-    pre: PropTypes.func.isRequired,
-    end: PropTypes.func.isRequired,
-    download: PropTypes.func.isRequired
+    onNext: PropTypes.func.isRequired,
+    onPre: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
 }
-
 
 export default PhotoView

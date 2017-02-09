@@ -7,13 +7,14 @@ import thunkMiddleware from 'redux-thunk'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import reducers from './reducers'
-import App from './containers/App'
-require('./index.scss')
+import App from './components/App'
+//import style from './styles/index.scss'
+require('./styles/index.scss')
 
 injectTapEventPlugin()
 document.body.setAttribute('oncontextmenu', 'return false')
 
-let store = createStore(reducers, 
+let store = createStore(reducers,
     applyMiddleware(
         thunkMiddleware,
         createLogger()

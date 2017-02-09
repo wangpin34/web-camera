@@ -13,13 +13,39 @@ export const endView = ({
 })
 
 
-export const nextView = ({
-    type: actions.NEXT_VIEW
-})
+export const nextView = () => {
+    return (dispatch, getState) => {
+        let thumbs = getState().thumbs
+        let current = getState().photo.current
+        let index = thumbs.indexOf(current)
+        if(index >= (thumbs.length - 1)) {
+            console.warn('You are on the last photo also.')
+            return
+        }
+        let next = thumbs[thumbs.indexOf(current) + 1]
+        dispatch({
+            type: actions.START_VIEW,
+            photo: next
+        })
+    }
+}
 
-export const preView = ({
-    type: actions.PRE_VIEW
-})
+export const preView = () => {
+    return (dispatch, getState) => {
+        let thumbs = getState().thumbs
+        let current = getState().photo.current
+        let index = thumbs.indexOf(current)
+        if(index <= 0) {
+            console.warn('You are on the first photo also.')
+            return
+        }
+        let pre = thumbs[index - 1]
+        dispatch({
+            type: actions.START_VIEW,
+            photo: pre
+        })
+    }
+}
 
 export const showView = () => {
     //Show view image
@@ -28,4 +54,3 @@ export const showView = () => {
 export const download = () => {
 
 }
-

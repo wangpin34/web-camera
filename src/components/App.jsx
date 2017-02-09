@@ -1,22 +1,16 @@
 import React, { Component, PropTypes } from 'react'
-import Camera from '../Containers/Camera'
 import AppBar from './CameraAppBar.jsx'
-import PhotoBox from '../containers/PhotoBox'
+import Camera from '../containers/Camera'
+import GreatPhoto from '../containers/GreatPhoto'
 import ThumbBox from '../containers/ThumbBox'
 
-const App = ({isPhotoMode}) => (
+const App = () => (
 
 	<div>
-        <AppBar />
 		<Camera />
-        // { isPhotoMode? <PhotoBox />: null }
-        <PhotoBox />
-        <ThumbBox/>
+        <GreatPhoto />
+        <ThumbBox />
 	</div>
 )
-
-App.propTypes = {
-    isPhotoMode: PropTypes.bool.isRequired
-}
 
 export default App
