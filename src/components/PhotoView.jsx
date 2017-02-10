@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { findDOMNode } from 'react-dom'
+import FontIcon from 'material-ui/FontIcon'
 
 class PhotoView extends Component {
     constructor(props){
@@ -10,10 +11,12 @@ class PhotoView extends Component {
         let { photo: { dataURI, meta: { name, size, timestamp } }, onNext, onPre, onClose, download } = this.props
         return (
             <div className="photo-view">
-                <span className="icon close" onClick={onClose}>X</span>
-                <span className="icon previous" onClick={onPre}>&lt;</span>
-                <img className="photo" src={ dataURI }/>
-                <span className="icon next" onClick={onNext}>&gt;</span>
+                <div className="view-box">
+                    <span className="material-icons close" onClick={onClose}>close</span>
+                    <span className="material-icons previous" onClick={onPre}>previous</span>
+                    <img className="photo" src={ dataURI }/>
+                    <span className="material-icons next" onClick={onNext}>right_arrow</span>
+                </div>
             </div>
         )
     }
